@@ -1,15 +1,22 @@
-local options = {
+require("conform").setup {
   formatters_by_ft = {
+    c = { "clang_format" },
+    cpp = { "clang_format" },
+    go = { "goimports" },
+    javascript = { "prettierd" },
+    json = { "prettierd" },
     lua = { "stylua" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
+    markdown = { "prettierd" },
+    proto = { "buf" },
+    python = { "isort", "ruff_format" },
+    rust = { "rustfmt" },
+    toml = { "taplo" },
+    yaml = { "prettierd" },
   },
 
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
+  format_on_save = {
+    async = false,
+    lsp_fallback = true,
+    time_ms = 500,
+  },
 }
-
-require("conform").setup(options)
