@@ -197,6 +197,29 @@ local plugins = {
     "sindrets/diffview.nvim",
     lazy = false,
   },
+
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "leoluz/nvim-dap-go",
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = function()
+      require "../configs.dap"
+    end,
+    lazy = false,
+  },
+
+  {
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup {
+        library = { plugins = { "nvim-dap-ui" }, types = true },
+      }
+    end,
+  },
 }
 
 return plugins
